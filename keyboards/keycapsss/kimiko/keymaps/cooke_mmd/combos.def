@@ -1,0 +1,26 @@
+
+
+COMB(C_LBRCKT,     LBCMD,           KC_W, KC_E)
+COMB(C_RBRCKT,     RBCMD,           KC_E, KC_R)
+COMB(C_MOUSE,      MAUS,            KC_Y, KC_U)
+COMB(C_CAPSLK,     KC_CAPS,         KC_R, KC_T)
+
+COMB(C_LSHIFT,     KC_LSFT,         KC_F, KC_E)
+COMB(C_LCTRL,      KC_LCTL,         KC_F, KC_D)
+COMB(C_LGUI,       KC_LGUI,         KC_D, KC_S)
+COMB(C_LALT,       KC_LALT,         KC_F, KC_S)
+COMB(C_RSHIFT,     KC_RSFT,         KC_J, KC_I)
+COMB(C_RCTRL,      KC_RCTL,         KC_J, KC_K)
+COMB(C_RGUI,       KC_RGUI,         KC_K, KC_L)
+COMB(C_RALT,       KC_RALT,         KC_J, KC_L)
+COMB(C_LGUISHFT,   LGUI(KC_LSFT),   KC_S, KC_D, KC_V)
+COMB(C_LCTRLSHFT,  LCTL(KC_LSFT),   KC_D, KC_V)
+COMB(C_RGUISHFT,   RGUI(KC_RSFT),   KC_M, KC_K, KC_L)
+COMB(C_RCTRLSHFT,  RCTL(KC_RSFT),   KC_M, KC_K)
+
+COMB(C_AMPR,       KC_AMPR,         KC_J, KC_U)
+COMB(C_AT,         KC_AT,           KC_K, KC_I)
+COMB(C_EXLM,       KC_EXLM,         KC_L, KC_O)
+COMB(C_DEL,        KC_DEL,          KC_M, SYMBSP)
+COMB(C_DELW,       DEL_W,           KC_COMM, SYMBSP)
+COMB(C_ESC,        KC_ESC,          KC_D, KC_F, KC_G)
