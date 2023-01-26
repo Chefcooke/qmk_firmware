@@ -30,7 +30,6 @@
 #define LOWER       MO(_NUMPAD)       // hold for macro layer
 #define LOWERR      OSL(_NUMPAD)      // One shot macro layer
 #define MAUS        TG(_MAUS)         // toggle mouse layer
-#define PROCR8      TG(_PROCR8)       // toggle PROCR8 layer on ipad
 
 #define LOWSPC      LT(LOWER,KC_SPC)
 #define RASENT      LT(RAISE,KC_ENT)
@@ -76,16 +75,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      QMKCOMPILE, SELECT,  SAVE,    Z_OUT,   SEARCH,  RPLC,                        SCRSHT1, BRACES,  MINMZ,   MAXMZ, XXXXXXX, XXXXXXX,     
      REDO,       UNDO,    CUT,     COPY,    PASTE,   PST_CLEAN, _______, _______, SCRSHT2, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    
                        XXXXXXX, XXXXXXX, _______, _______,   _______, _______, _______, _______, _______, _______                                                 
-  ),
-
-
-// PROCR8
- [_PROCR8] = LAYOUT(
-     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      _______, _______, _______, _______, _______, _______,
-     KC_LCTL, PROPER,  PROFS,   KC_E,    KC_LBRC, KC_RBRC,                      _______, _______, _______, _______, _______, _______,
-     KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,    KC_L,                         _______, _______, _______, _______, _______, _______,
-     KC_LALT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _______,    _______, _______, _______, _______, _______, _______, _______,
-                      _______, _______,  _______, KC_LGUI, _______,    _______, _______, _______, _______, _______
   ),
 
 // MAUS

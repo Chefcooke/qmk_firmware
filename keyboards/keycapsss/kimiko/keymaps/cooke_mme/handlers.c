@@ -9,7 +9,7 @@ enum OS os = OSX;
 
 //Returns Command / Control depending on the OS
 uint16_t os_cmd_key(void){;
-  return (  os == OSX ? KC_LCMD: KC_LCTRL );
+  return (  os == OSX ? KC_LCMD: KC_LCTL );
 }
 
 //══════════════════════════════════════════════════════════════

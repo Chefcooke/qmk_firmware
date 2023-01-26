@@ -10,9 +10,9 @@
 //key combinations accordint to the OS. Currently: {OSX, Windows}
 static const uint16_t osKeys[][NUMBER_OF_OS] PROGMEM = {
 	//CMD_OS
-	{ KC_LCMD, KC_LCTRL},
+	{ KC_LCMD, KC_LCTL},
 	//CTR_OS
-	{ KC_LCTRL, KC_LWIN},
+	{ KC_LCTL, KC_LWIN},
 	//CUT
 	{ G(KC_X), C(KC_X) },
 	//COPY
@@ -40,11 +40,11 @@ static const uint16_t osKeys[][NUMBER_OF_OS] PROGMEM = {
 	//SELECT
 	{ G(KC_A), C(KC_A) },
 	//MUTE
-	{ KC__MUTE, KC_MUTE },
+	{ KC_MUTE, KC_MUTE },
 	//VOL_UP
-	{ KC__VOLUP, KC_VOLU },
+	{ KC_VOLU, KC_VOLU },
 	//VOL_DOWN
-	{ KC__VOLDOWN, KC_VOLD },
+	{ KC_VOLD, KC_VOLD },
 	//CLS_APPS
 	{ A(G(KC_ESC)), C(A(KC_DEL)) },
 	//BR_UP

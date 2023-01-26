@@ -177,9 +177,6 @@
             case _SHIFT:
                 oled_write_P(PSTR("# Nav"), false);
                 break;
-            case _PROCR8:
-                oled_write_P(PSTR("PCR8T"), false);
-                break;
             case _MAUS:
                 oled_write_P(PSTR("MAUS "), false);
                 break;
