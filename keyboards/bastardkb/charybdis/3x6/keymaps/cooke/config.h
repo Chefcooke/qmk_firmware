@@ -34,6 +34,12 @@
 // Invert X axis on mouse reports.
 #define POINTING_DEVICE_INVERT_X
 
+#define CHARYBDIS_CONFIG_SYNC
+
+// adding the pointing device modes to see if that allows for dragscroll
+// https://github.com/qmk/qmk_firmware/pull/18218
+#define POINTING_DEVICE_MODES_ENABLE
+
 /* RGB matrix support. */
 #ifdef RGB_MATRIX_ENABLE
 #    define SPLIT_TRANSPORT_MIRROR
@@ -102,3 +108,21 @@
 //#        define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #    endif // !__arm__
 #endif
+
+//#define PERMISSIVE_HOLD
+#define IGNORE_MOD_TAP_INTERRUPT
+
+#define TAPPING_TERM 175 //default is 200, 175 to make hold keys act a little faster
+#define TAPPING_TERM_PER_KEY
+
+// Combos
+#undef COMBO_TERM
+#define COMBO_TERM 25        // how quickly all combo keys must be pressed in succession to trigger
+#define COMBO_MUST_HOLD_MODS // if a combo triggers a modifier, only trigger when the combo is held
+#define COMBO_HOLD_TERM 175  // how long at least one of the combo keys must be held to trigger
+#define COMBO_ONLY_FROM_LAYER 0 // All combos are specified from the base layer, saves space
+
+// Auto Shift
+#define AUTO_SHIFT_TIMEOUT 150
+
+#define CAPS_WORD_TOGGLE_KEY
