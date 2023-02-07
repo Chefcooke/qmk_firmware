@@ -81,8 +81,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // MOUSE POYNTR
  [LAYER_POINTER] = LAYOUT_charybdis_3x6(
      KC_SLEP, _______, _______, _______, DPI_MOD, _______,    _______, _______, _______, _______, _______, _______,  
-     _______, _______, KC_BTN3, KC_BTN2, KC_BTN1, KC_WH_U,    _______, _______, _______, _______, _______, _______,     
-     SWAP_OS, KC_BSPC,  KC_ESC,  KC_ENT,  KC_TAB,  KC_WH_D,   _______, _______, _______, _______, _______, _______, 
+     _______, _______, KC_BTN3, KC_BTN2, KC_BTN1, KC_WH_U,    _______, DRGSCRL, SNIPING, _______, _______, _______,     
+     SWAP_OS, KC_BSPC,  KC_ESC,  KC_ENT,  KC_TAB,  KC_WH_D,   _______, DRG_TOG, SNP_TOG, _______, _______, _______, 
                                 _______, _______, _______,    _______, _______                                               
   ),
 
