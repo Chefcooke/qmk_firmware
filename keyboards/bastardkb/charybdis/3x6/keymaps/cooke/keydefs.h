@@ -113,6 +113,7 @@ enum custom_keycodes {
 	SCRSHT,				    // screenshots on pc
     QMKCOMPILE,             // quick compile in qmk msys
     BRACES,
+
 };
 
 // original :: static uint16_t getOSKey(uint16_t keyName );

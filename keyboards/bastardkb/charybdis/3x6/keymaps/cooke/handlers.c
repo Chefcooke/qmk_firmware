@@ -34,7 +34,6 @@ void tap_os_dependent_key( uint16_t key ){
 }
 
 
-
 //═══════════════════════════════════════════════════════════════
 //   KEY EVENT HANDLER
 //═══════════════════════════════════════════════════════════════
@@ -94,24 +93,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         return false;
 
-        case SCRSHT:
+      case SCRSHT:
           if (record->event.pressed) {
             SEND_STRING(SS_LGUI(SS_LSFT("S"))); //Windows Key + Shift + S = Screencap
             return false;
           }
           break; 
-        case QMKCOMPILE:
+      case QMKCOMPILE:
           if (record->event.pressed) {
             SEND_STRING("qmk compile -kb bastardkb/charybdis/3x6/v2/splinky_3 -km cooke");
             return false;
           }
           break; 
-        case BRACES:
+      case BRACES:
           if (record->event.pressed) {
             SEND_STRING("()" SS_TAP(X_LEFT));
             return false;
           }
           break;
-      }
+}
       return true;
+      
   }

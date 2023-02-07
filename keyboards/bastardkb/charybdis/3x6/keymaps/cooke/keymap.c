@@ -16,7 +16,7 @@
  */
 #include QMK_KEYBOARD_H
 #include "keydefs.c"
-#include "handlers.c"
+#include "handlers.c"   
 
 #define PROFS       LGUI(KC_0)       //PROCR8 fullscreen
 #define PROPER      LGUI(KC_SCLN)    // PROCR8 perspective guide
@@ -29,8 +29,8 @@
 #define LSETTINGS       TG(SETTINGS)
 
 #define THMBLL      LT(LMACRO,KC_SPC)
-#define THMBLR      KC_TAB
-#define THMBRL      KC_BSPC
+#define THMBLR      LT(LLAYER_POINTER,KC_TAB)
+#define THMBRL      LT(LSETTINGS,KC_BSPC)
 #define THMBRR      LT(LNUMNAV,KC_ENT)
 
 #define DPI_MOD     POINTER_DEFAULT_DPI_FORWARD
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [COLEMAK_DH] = LAYOUT_charybdis_3x6(  
      KC_VOLU, KC_Q, KC_W, KC_F, KC_P, KC_B,       KC_J,   KC_L,    KC_U,    KC_Y,   KC_QUOT, KC_ASON,
      KC_VOLD, KC_A, KC_R, KC_S, KC_T, KC_G,       KC_M,   KC_N,    KC_E,    KC_I,   KC_O,    XXXXXXX,
-     SWAP_OS, KC_Z, KC_X, KC_C, KC_D, KC_V,       KC_K,   KC_H,    KC_COMM, KC_DOT, KC_SLSH, KC_ASOFF,
+     XXXXXXX, KC_Z, KC_X, KC_C, KC_D, KC_V,       KC_K,   KC_H,    KC_COMM, KC_DOT, KC_SLSH, KC_ASOFF,
                     THMBLL, XXXXXXX, THMBLR,      THMBRL, THMBRR                                           
   ), 
 
@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // MACRO
  [MACRO] = LAYOUT_charybdis_3x6(
-     KC_SLEP,    PROFS,  CLS_WIN, Z_IN,  REFRESH, NEWTAB,       EMOJI,   XXXXXXX, WIN_L,   WIN_R,   XXXXXXX, XXXXXXX,   
+     XXXXXXX,    PROFS,  CLS_WIN, Z_IN,  REFRESH, NEWTAB,       EMOJI,   XXXXXXX, WIN_L,   WIN_R,   XXXXXXX, XXXXXXX,   
      QMKCOMPILE, SELECT, SAVE,    Z_OUT, SEARCH,  RPLC,         SCRSHT1, BRACES,  MINMZ,   MAXMZ,   XXXXXXX, XXXXXXX,     
      REDO,       UNDO,   CUT,     COPY,  PASTE,   PST_CLEAN,    SCRSHT2, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    
                                _______, _______,  _______,      _______, _______                                                
@@ -80,17 +80,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // MOUSE POYNTR
  [LAYER_POINTER] = LAYOUT_charybdis_3x6(
-     _______, _______, _______, DPI_MOD, S_D_MOD, _______,    _______, _______, _______, _______, _______, _______,  
-     _______, _______, _______, KC_WH_U, KC_WH_D, _______,    _______, DRG_TOG, SNP_TOG, _______, _______, _______,     
-     _______, _______, _______, DRGSCRL, SNIPING, KC_BTN3,    _______, _______, _______, _______, _______, _______, 
-                                KC_BTN1, _______, KC_BTN2,    _______, _______                                               
+     KC_SLEP, _______, _______, _______, DPI_MOD, _______,    _______, _______, _______, _______, _______, _______,  
+     _______, _______, KC_BTN3, KC_BTN2, KC_BTN1, KC_WH_U,    _______, _______, _______, _______, _______, _______,     
+     SWAP_OS, KC_BSPC,  KC_ESC,  KC_ENT,  KC_TAB,  KC_WH_D,   _______, _______, _______, _______, _______, _______, 
+                                _______, _______, _______,    _______, _______                                               
   ),
 
 // SETTINGS
  [SETTINGS] = LAYOUT_charybdis_3x6(
-     _______, _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, _______,   
-     _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, _______,    _______, _______, _______, _______, _______, _______,    
-     _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,    _______, _______, _______, _______, _______, _______, 
+     _______, _______, _______, _______, _______, _______,    _______, KC_F4, KC_F5, KC_6, KC_F10, _______,  
+     _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, _______,    KC_BSPC, KC_F1, KC_F2, KC_3, KC_F11, _______,    
+     _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,    _______, KC_F7, KC_F8, KC_9, KC_F12, _______, 
                                _______, _______,  _______,    _______, _______                                                
   ),
 };
@@ -110,3 +110,18 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 }
+
+/*
+COMB(C_FUN1,       KC_F1,           THMBRL , KC_J)
+COMB(C_FUN2,       KC_F2,           THMBRL , KC_K)
+COMB(C_FUN3,       KC_F3,           THMBRL , KC_L)
+COMB(C_FUN4,       KC_F4,           THMBRL , KC_U)
+COMB(C_FUN5,       KC_F5,           THMBRL , KC_I)
+COMB(C_FUN6,       KC_F6,           THMBRL , KC_O)
+COMB(C_FUN7,       KC_F7,           THMBRL , KC_M)
+COMB(C_FUN8,       KC_F8,           THMBRL , KC_COMM)
+COMB(C_FUN9,       KC_F9,           THMBRL , KC_DOT)
+COMB(C_FUN10,      KC_F10,          THMBRL , KC_P)
+COMB(C_FUN11,      KC_F11,          THMBRL , KC_QUOT)
+COMB(C_FUN12,      KC_F12,          THMBRL , KC_SLASH)
+*/
