@@ -33,6 +33,24 @@
 #define THMBRL      LT(LSETTINGS,KC_BSPC)
 #define THMBRR      LT(LNUMNAV,KC_ENT)
 
+
+#define HR_A        LGUI(KC_A)
+#define HR_R        LALT(KC_R)
+#define HR_S        LCTL(KC_S)
+#define HR_T        LSFT(KC_T)
+#define HR_N        RSFT(KC_N)
+#define HR_E        RCTL(KC_E)
+#define HR_I        RALT(KC_I)
+#define HR_O        RGUI(KC_O)
+
+#define ___HOME_ROW_GACS_L1___ LGUI(KC_A), LALT(KC_S), LCTL(KC_D), LSFT(KC_F)
+#define ___HOME_ROW_GACS_L2___ LGUI(KC_0), LALT(KC_1), LCTL(KC_2), LSFT(KC_3)
+#define ___HOME_ROW_GACS_L3___ 
+
+#define ___HOME_ROW_GACS_R1___ RSFT(KC_J), RCTL(KC_K), RALT(KC_L), RGUI(KC_QUOT)
+#define ___HOME_ROW_GACS_R2___ RSFT(KC_LEFT), RCTL(KC_DOWN), RALT(KC_RGHT), RGUI(KC_NO)
+#define ___HOME_ROW_GACS_R3___ 
+
 #define DPI_MOD     POINTER_DEFAULT_DPI_FORWARD
 #define DPI_RMOD    POINTER_DEFAULT_DPI_REVERSE
 #define S_D_MOD     POINTER_SNIPING_DPI_FORWARD
@@ -49,15 +67,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // COLEMAK
  [COLEMAK_DH] = LAYOUT_charybdis_3x6(  
      KC_VOLU, KC_Q, KC_W, KC_F, KC_P, KC_B,       KC_J,   KC_L,    KC_U,    KC_Y,   KC_QUOT, KC_ASON,
-     KC_VOLD, KC_A, KC_R, KC_S, KC_T, KC_G,       KC_M,   KC_N,    KC_E,    KC_I,   KC_O,    SWAP_OS,
+     KC_VOLD, HR_A, HR_R, HR_S, HR_T, KC_G,       KC_M,   HR_N,    HR_E,    HR_I,   HR_O,    SWAP_OS,
      XXXXXXX, KC_Z, KC_X, KC_C, KC_D, KC_V,       KC_K,   KC_H,    KC_COMM, KC_DOT, KC_SLSH, KC_ASOFF,
-                    THMBLL, XXXXXXX, THMBLR,      THMBRL, THMBRR                                           
+                    THMBLL, XXXXXXX, THMBLR,      THMBRL, THMBRR                                                 
   ), 
 
 // QWERTY
  [QWERTY] = LAYOUT_charybdis_3x6(   
      KC_VOLU, KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y,   KC_U,    KC_I,    KC_O,   KC_P,    KC_ASON,
-     KC_VOLD, KC_A, KC_S, KC_D, KC_F, KC_G,        KC_H,   KC_J,    KC_K,    KC_L,   KC_QUOT, SWAP_OS, 
+     KC_VOLD, ___HOME_ROW_GACS_L1___, KC_G,        KC_H,   ___HOME_ROW_GACS_R1___,            SWAP_OS, 
      XXXXXXX, KC_Z, KC_X, KC_C, KC_V, KC_B,        KC_N,   KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_ASOFF,
                     THMBLL, XXXXXXX, THMBLR,       THMBRL, THMBRR                                     
   ),
@@ -65,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // NUMNAV
  [NUMNAV] = LAYOUT_charybdis_3x6(
      _______, XXXXXXX, KC_4,  KC_5, KC_6, KC_PLUS,   KC_ASTR, KC_PGDN, KC_UP,   KC_PGUP, XXXXXXX, XXXXXXX,
-     _______, KC_0,    KC_1,  KC_2, KC_3, KC_MINS,   KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, 
+     _______, ___HOME_ROW_GACS_L1___,     KC_MINS,   KC_SLSH, ___HOME_ROW_GACS_R2___,             XXXXXXX, 
      _______, KC_DOT,  KC_7,  KC_8, KC_9, KC_EQL,    XXXXXXX, KC_HOME, XXXXXXX, KC_END,  XXXXXXX, XXXXXXX,
                        _______, _______, _______,    _______, _______
   ),

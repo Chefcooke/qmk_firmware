@@ -10,6 +10,7 @@ enum layers {
     _SYMBOL,
     _SHIFT,
     _ADJUST,
+	_SETTNG,
     _MAUS,
  };
 
