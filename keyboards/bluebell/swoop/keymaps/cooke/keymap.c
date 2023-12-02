@@ -1,0 +1,95 @@
+/* Copyright 2022 James White <jamesmnw@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+#include QMK_KEYBOARD_H
+
+#include QMK_KEYBOARD_H
+#include "keydefs.c"
+#include "handlers.c"   
+
+#define PROFS       LGUI(KC_0)       //PROCR8 fullscreen
+#define PROPER      LGUI(KC_SCLN)    // PROCR8 perspective guide
+
+#define LCOLEMAK        DF(COLEMAK_DH)
+#define LQWERTY         DF(QWERTY)
+#define LNUMNAV         MO(NUMNAV)      // hold for num nav layer
+#define LMACRO          MO(MACRO)       // hold for macro layer
+#define LLAYER_POINTER  MO(LAYER_POINTER)
+#define LSETTINGS       TG(SETTINGS)
+
+#define THMBLL      LT(LMACRO,KC_SPC)
+#define THMBLR      LT(LLAYER_POINTER,KC_TAB)
+#define THMBRL      LT(LSETTINGS,KC_BSPC)
+#define THMBRR      LT(LNUMNAV,KC_ENT)
+
+#include "combo_config.c"
+
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+// COLEMAK
+ [COLEMAK_DH] = LAYOUT_split_3x5_3(  
+     KC_Q, KC_W, KC_F, KC_P, KC_B,       KC_J,   KC_L,    KC_U,    KC_Y,   KC_QUOT,
+     KC_A, KC_R, KC_S, KC_T, KC_G,       KC_M,   KC_N,    KC_E,    KC_I,   KC_O,   
+     KC_Z, KC_X, KC_C, KC_D, KC_V,       KC_K,   KC_H,    KC_COMM, KC_DOT, KC_SLSH,
+          XXXXXXX, THMBLL,  THMBLR,       THMBRL, THMBRR, XXXXXXX                                          
+  ), 
+
+// QWERTY
+ [QWERTY] = LAYOUT_split_3x5_3(   
+     KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y,   KC_U,    KC_I,    KC_O,   KC_P,    
+     KC_A, KC_S, KC_D, KC_F, KC_G,        KC_H,   KC_J,    KC_K,    KC_L,   KC_QUOT, 
+     KC_Z, KC_X, KC_C, KC_V, KC_B,        KC_N,   KC_M,    KC_COMM, KC_DOT, KC_SLSH,
+          XXXXXXX, THMBLL,  THMBLR,       THMBRL, THMBRR, XXXXXXX                                     
+  ),
+
+// NUMNAV
+ [NUMNAV] = LAYOUT_split_3x5_3(
+     XXXXXXX, KC_4,  KC_5, KC_6, KC_PLUS,   KC_ASTR, KC_PGDN, KC_UP,   KC_PGUP, XXXXXXX,
+     KC_0,    KC_1,  KC_2, KC_3, KC_MINS,   KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, 
+     KC_DOT,  KC_7,  KC_8, KC_9, KC_EQL,    XXXXXXX, KC_HOME, XXXXXXX, KC_END,  XXXXXXX,
+              _______, _______, _______,    _______, _______, _______  
+  ),
+
+// MACRO
+ [MACRO] = LAYOUT_split_3x5_3(
+     PROFS,  CLS_WIN, Z_IN,  REFRESH, NEWTAB,     EMOJI,   XXXXXXX, XXXXXXX, XXXXXXX, KC_ASON,   
+     SELECT, SAVE,    Z_OUT, SEARCH,  RPLC,       SCRSHT1, BRACES,  XXXXXXX, XXXXXXX, SWAP_OS,     
+     UNDO,   CUT,     COPY,  PASTE,   PST_CLN,    SCRSHT2, XXXXXXX, XXXXXXX, XXXXXXX, KC_ASOFF,    
+                    _______, _______, _______,    _______, _______, _______                                                  
+  ),
+
+// SETTINGS
+ [SETTINGS] = LAYOUT_split_3x5_3(
+     KC_SLEP, _______, _______, KC_VOLD, KC_VOLU,    _______, KC_F4, KC_F5, KC_6, KC_F10,  
+     QMKCOM,  RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI,    _______, KC_F1, KC_F2, KC_3, KC_F11,    
+     _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,    _______, KC_F7, KC_F8, KC_9, KC_F12, 
+                      _______, _______, _______,    _______, _______, _______                                                
+  ),
+};
+// clang-format on
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+            return TAPPING_TERM + 40;
+        case RGUI_T(KC_QUOT):
+            return TAPPING_TERM + 40;
+        case RGUI_T(KC_O):
+            return TAPPING_TERM + 40;
+        //case LT(1, KC_GRV):
+        //    return 130;
+        default:
+            return TAPPING_TERM;
+    }
+}

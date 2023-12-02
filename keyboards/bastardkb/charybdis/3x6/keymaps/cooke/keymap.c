@@ -80,17 +80,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // MOUSE POYNTR
  [LAYER_POINTER] = LAYOUT_charybdis_3x6(
-     _______, _______, S_D_RMOD, S_D_MOD, DPI_MOD, DPI_RMOD,  _______, _______, _______, _______, _______, _______,  
+     _______, DRG_TOG, S_D_RMOD, S_D_MOD, DPI_MOD, DPI_RMOD,  _______, _______, _______, _______, _______, _______,  
      SNIPING, DRGSCRL, KC_BTN3,  KC_BTN2, KC_BTN1, KC_ENT,    _______, _______, _______, _______, _______, _______,      
-     SNP_TOG, DRG_TOG, KC_WH_D,  KC_WH_U, KC_TAB,  KC_ESC,    _______, _______, _______, _______, _______, _______,  
+     SNP_TOG, XXXXXXX, XXXXXXX,  KC_BSPC, KC_TAB,  KC_ESC,    _______, _______, _______, _______, _______, _______,  
                                 _______, _______, _______,    _______, _______                                               
   ),
 
 // SETTINGS
  [SETTINGS] = LAYOUT_charybdis_3x6(
-     _______, _______, _______, _______, _______, _______,    _______, KC_F4, KC_F5, KC_6, KC_F10, _______,  
-     _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, _______,    KC_BSPC, KC_F1, KC_F2, KC_3, KC_F11, _______,    
-     _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,    _______, KC_F7, KC_F8, KC_9, KC_F12, _______, 
+     _______, _______, _______, _______, _______, _______,    _______, KC_F4, KC_F5, KC_F6, KC_F10, _______,  
+     _______, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, _______,    KC_BSPC, KC_F1, KC_F2, KC_F3, KC_F11, _______,    
+     _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, _______,    _______, KC_F7, KC_F8, KC_F9, KC_F12, _______, 
                                _______, _______,  _______,    _______, _______                                                
   ),
 };

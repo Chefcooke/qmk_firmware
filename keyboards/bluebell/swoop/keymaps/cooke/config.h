@@ -20,36 +20,7 @@
 
 #include "config_common.h"
 
-/* Pointing device configuration. */
-
-// Enable use of pointing device on slave split.
-#define SPLIT_POINTING_ENABLE
-
-// Pointing device is on the right split.
-#define POINTING_DEVICE_RIGHT
-
-// Copying delay dual track ball
-// Handedness.
-// #undef MASTER_RIGHT
-
-// Double trackball build.
-//#undef POINTING_DEVICE_RIGHT
-// #define POINTING_DEVICE_COMBINED
-// End copy delay dual track ball
-
-// Limits the frequency that the sensor is polled for motion.
-#define POINTING_DEVICE_TASK_THROTTLE_MS 1
-
-// Invert X axis on mouse reports.
-#define POINTING_DEVICE_INVERT_X
-
-#define CHARYBDIS_CONFIG_SYNC
-
-// adding the pointing device modes to see if that allows for dragscroll
-// https://github.com/qmk/qmk_firmware/pull/18218
-#define POINTING_DEVICE_MODES_ENABLE
-
-/* RGB matrix support. */
+/* RGB matrix support. 
 #ifdef RGB_MATRIX_ENABLE
 #    define SPLIT_TRANSPORT_MIRROR
 #    define RGB_MATRIX_MAXIMUM_BRIGHTNESS 255
@@ -117,6 +88,7 @@
 //#        define ENABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #    endif // !__arm__
 #endif
+*/
 
 //#define PERMISSIVE_HOLD
 #define IGNORE_MOD_TAP_INTERRUPT
