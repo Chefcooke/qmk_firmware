@@ -63,9 +63,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // MACRO
  [MACRO] = LAYOUT_split_3x5_3(
-     PROFS,  CLS_WIN, Z_IN,  REFRESH, NEWTAB,     EMOJI,   XXXXXXX, XXXXXXX, XXXXXXX, KC_ASON,   
+     PROFS,  CLS_WIN, Z_IN,  REFRESH, NEWTAB,     EMOJI,   XXXXXXX, XXXXXXX, SWIN_OS, KC_ASON,   
      SELECT, SAVE,    Z_OUT, SEARCH,  RPLC,       SCRSHT1, BRACES,  XXXXXXX, XXXXXXX, SWAP_OS,     
-     UNDO,   CUT,     COPY,  PASTE,   PST_CLN,    SCRSHT2, XXXXXXX, XXXXXXX, XXXXXXX, KC_ASOFF,    
+     UNDO,   CUT,     COPY,  PASTE,   PST_CLN,    SCRSHT2, XXXXXXX, XXXXXXX, SMAC_OS, KC_ASOFF,    
                     _______, _______, _______,    _______, _______, _______                                                  
   ),
 

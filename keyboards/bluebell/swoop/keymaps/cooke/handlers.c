@@ -77,19 +77,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
 
         //════════════════ CUSTOM HANDLED KEYS ══════════════
-      case SWAP_OS:
-          if(down){
-              clear_mods();
-                if(os == OSX){
+       case SWIN_OS:
+            if (record->event.pressed) {
+                clear_mods();
                 os = WINDOWS;
-            }else{
-                os = OSX;
-            }
 
-            #ifdef OLED_DRIVER_ENABLE
-              oled_os_notification( os );
-            #endif
-        }
+                #ifdef OLED_DRIVER_ENABLE
+                    oled_os_notification(os);
+                #endif
+            }
+            break;
+
+        case SMAC_OS:
+            if (record->event.pressed) {
+                clear_mods();
+                os = OSX;
+
+                #ifdef OLED_DRIVER_ENABLE
+                    oled_os_notification(os);
+                #endif
+            }
+            break;
+
         return false;
 
       case SCRSHT:

@@ -110,6 +110,8 @@ enum custom_keycodes {
 	APPLE_F11,
 	APPLE_F12,
 	SWAP_OS,
+	SWIN_OS,
+	SMAC_OS,
 	SCRSHT,				    // screenshots on pc
     QMKCOM,             // quick compile in qmk msys
     BRACES,

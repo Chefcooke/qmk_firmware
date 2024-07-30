@@ -42,6 +42,8 @@
 #define DRGSCRL     DRAGSCROLL_MODE
 #define DRG_TOG     DRAGSCROLL_MODE_TOGGLE
 
+#define DRAGSCROLL_PADDING 6
+
 #include "combo_config.c"
 
 // clang-format off
@@ -95,6 +97,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 // clang-format on
+
+void keyboard_post_init_user(void) {
+    pointing_device_set_cpi_on_side(true, 100); //Set cpi on left side to a low value for slower scrolling.
+    pointing_device_set_cpi_on_side(false, 800); //Set cpi on right side to a reasonable value for mousing.
+}
+
+report_mouse_t pointing_device_task_combined_user(report_mouse_t left_report, report_mouse_t right_report) {
+    static int16_t scroll_buffer_x = 0;
+    static int16_t scroll_buffer_y = 0;
+    scroll_buffer_x -= left_report.x;
+    scroll_buffer_y -= left_report.y;
+    left_report.x = 0;
+    left_report.y = 0;
+    left_report.h = 0;
+    left_report.v = 0;
+    if (abs(scroll_buffer_x) > DRAGSCROLL_PADDING) {
+        left_report.h   = scroll_buffer_x > 0 ? 1 : -1;
+        scroll_buffer_x = 0;
+    }
+    if (abs(scroll_buffer_y) > DRAGSCROLL_PADDING) {
+        left_report.v   = scroll_buffer_y > 0 ? 1 : -1;
+        scroll_buffer_y = 0;
+    }
+#ifdef POINTING_DEVICE_INVERT_X
+    right_report.x = -right_report.x;
+#endif // POINTING_DEVICE_INVERT_X
+#ifdef POINTING_DEVICE_INVERT_Y
+    right_report.y = -right_report.y;
+#endif // POINTING_DEVICE_INVERT_Y
+    return pointing_device_combine_reports(left_report, right_report);
+}
+
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
