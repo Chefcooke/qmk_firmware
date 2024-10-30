@@ -33,5 +33,8 @@ LAYOUTS = split_3x5_3
 #my mods
 
 CAPS_WORD_ENABLE = yes
-AUTO_SHIFT_ENABLE = yes
+AUTO_SHIFT_ENABLE = no
 COMBO_ENABLE = yes
+TAP_DANCE_ENABLE = yes
+
+SRC += tap_dance.c

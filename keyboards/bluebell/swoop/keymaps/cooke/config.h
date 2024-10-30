@@ -18,7 +18,7 @@
 
 #pragma once
 
-#include "config_common.h"
+// #include "config_common.h"  *** commented out because it caused a compile error
 
 /* RGB matrix support. 
 #ifdef RGB_MATRIX_ENABLE
@@ -91,7 +91,7 @@
 */
 
 //#define PERMISSIVE_HOLD
-#define IGNORE_MOD_TAP_INTERRUPT
+//#define IGNORE_MOD_TAP_INTERRUPT  ***no longer used,commenting out
 
 #define TAPPING_TERM 175 //default is 200, 175 to make hold keys act a little faster
 #define TAPPING_TERM_PER_KEY

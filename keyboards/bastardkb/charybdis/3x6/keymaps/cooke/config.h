@@ -18,7 +18,8 @@
 
 #pragma once
 
-#include "config_common.h"
+// #include config_common.h
+// edited this out because it was giving me compile errors in qmk msys
 
 /* Pointing device configuration. */
 
@@ -33,7 +34,7 @@
 // #undef MASTER_RIGHT
 
 // Double trackball build.
-//#undef POINTING_DEVICE_RIGHT
+// #undef POINTING_DEVICE_RIGHT
 // #define POINTING_DEVICE_COMBINED
 // End copy delay dual track ball
 
@@ -119,7 +120,7 @@
 #endif
 
 //#define PERMISSIVE_HOLD
-#define IGNORE_MOD_TAP_INTERRUPT
+//#define IGNORE_MOD_TAP_INTERRUPT
 
 #define TAPPING_TERM 175 //default is 200, 175 to make hold keys act a little faster
 #define TAPPING_TERM_PER_KEY

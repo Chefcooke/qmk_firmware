@@ -57,7 +57,6 @@ enum custom_keycodes {
 	BR_DOWN,
 	W_LEFT,
 	W_RIGHT,
-	MONITOR,
 	Z_IN,
 	Z_OUT,
 	TOP,
@@ -94,6 +93,8 @@ enum custom_keycodes {
 	RBCMD,
 	CLS_WIN,
 	LAST_OS_INDEX,
+
+	
 
 	//────────────── CUSTOM HANDLED KEYS ──────────────
 	FIRST_CUSTOM_INDEX,

@@ -25,7 +25,6 @@ AUDIO_SUPPORTED = no        # Audio is not supported
 RGB_MATRIX_SUPPORTED = yes  # RGB matrix is supported and enabled by default
 RGBLIGHT_SUPPORTED = yes    # RGB underglow is supported, but not enabled by default
 RGB_MATRIX_ENABLE = yes     # Enable keyboard RGB matrix functionality
-RGB_MATRIX_DRIVER = WS2812
 
 SPLIT_KEYBOARD = yes
 LAYOUTS = split_3x6_3
@@ -39,5 +38,8 @@ WS2812_DRIVER = vendor
 #my mods
 
 CAPS_WORD_ENABLE = yes
-AUTO_SHIFT_ENABLE = yes
+AUTO_SHIFT_ENABLE = no
 COMBO_ENABLE = yes
+TAP_DANCE_ENABLE = yes
+
+SRC += tap_dance.c

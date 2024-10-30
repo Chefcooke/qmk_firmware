@@ -55,8 +55,6 @@ static const uint16_t osKeys[][NUMBER_OF_OS] PROGMEM = {
 	{ A(KC_LEFT), A(KC_LEFT) },
 	//W_RIGHT
 	{ A(KC_RIGHT), A(KC_RIGHT) },
-	//MONITOR
-	{ X(KC_E), C(S(KC_ESC))},
 	//Z_IN
 	{ G(KC_PLUS), C(KC_PLUS)},
 	//Z_OUT

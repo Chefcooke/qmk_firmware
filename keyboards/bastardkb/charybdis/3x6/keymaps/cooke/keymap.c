@@ -14,9 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#include "keymap_introspection.h"
 #include QMK_KEYBOARD_H
 #include "keydefs.c"
-#include "handlers.c"   
+#include "handlers.c" 
+#include "tap_dance.h"  
 
 #define PROFS       LGUI(KC_0)       //PROCR8 fullscreen
 #define PROPER      LGUI(KC_SCLN)    // PROCR8 perspective guide
@@ -28,12 +31,16 @@
 #define LLAYER_POINTER  MO(LAYER_POINTER)
 #define LSETTINGS       TG(SETTINGS)
 
-#define THMBLL      LT(LMACRO,KC_SPC)
+#define THMBLL      LT(LMACRO,KC_BSPC)
 #define THMBLR      LT(LLAYER_POINTER,KC_TAB)
-#define THMBRL      LT(LSETTINGS,KC_BSPC)
-#define THMBRR      LT(LNUMNAV,KC_ENT)
+#define THMBRL      LT(LSETTINGS,KC_ENT)
+#define THMBRR      LT(LNUMNAV,KC_SPC)
 
-#define DPI_MOD     POINTER_DEFAULT_DPI_FORWARD
+#define THGLL      LT(LMACRO,KC_BSPC)
+#define THGLR      LT(LLAYER_POINTER,KC_TAB)
+#define THGRL      LT(LSETTINGS,KC_ENT)
+#define THGRR      LT(LNUMNAV,KC_SPC)
+
 #define DPI_RMOD    POINTER_DEFAULT_DPI_REVERSE
 #define S_D_MOD     POINTER_SNIPING_DPI_FORWARD
 #define S_D_RMOD    POINTER_SNIPING_DPI_REVERSE
@@ -42,24 +49,25 @@
 #define DRGSCRL     DRAGSCROLL_MODE
 #define DRG_TOG     DRAGSCROLL_MODE_TOGGLE
 
+
 #include "combo_config.c"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-// COLEMAK
+// COLEMAK HANDS DOWN TITANIUM
  [COLEMAK_DH] = LAYOUT_charybdis_3x6(  
-     KC_VOLU, KC_Q, KC_W, KC_F, KC_P, KC_B,       KC_J,   KC_L,    KC_U,    KC_Y,   KC_QUOT, KC_ASON,
-     KC_VOLD, KC_A, KC_R, KC_S, KC_T, KC_G,       KC_M,   KC_N,    KC_E,    KC_I,   KC_O,    XXXXXXX,
-     XXXXXXX, KC_Z, KC_X, KC_C, KC_D, KC_V,       KC_K,   KC_H,    KC_COMM, KC_DOT, KC_SLSH, KC_ASOFF,
-                    THMBLL, XXXXXXX, THMBLR,      THMBRL, THMBRR                                           
+     KC_VOLU, TD(CT_JZK), TD(CT_GQK), KC_M, KC_P, KC_V, TD(CT_HAT),  TD(CT_DC),  TD(CT_SLP), TD(CT_DQE),  TD(CT_QQ),XXXXXXX,
+     KC_VOLD, KC_C, KC_S, KC_N, KC_T, KC_K,             TD(CT_CSC),  KC_A,       KC_E,       KC_I,        KC_H,     XXXXXXX,
+     XXXXXXX, KC_X, KC_F, KC_L, KC_D, KC_W,             TD(CT_MP),   KC_U,       KC_O,       KC_Y,        KC_B,     XXXXXXX,
+                    THMBLL, XXXXXXX, THMBLR,            THMBRL, THMBRR                                           
   ), 
 
 // QWERTY
  [QWERTY] = LAYOUT_charybdis_3x6(   
-     KC_VOLU, KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y,   KC_U,    KC_I,    KC_O,   KC_P,    KC_ASON,
+     KC_VOLU, KC_Q, KC_W, KC_E, KC_R, KC_T,        KC_Y,   KC_U,    KC_I,    KC_O,   KC_P,    XXXXXXX,
      KC_VOLD, KC_A, KC_S, KC_D, KC_F, KC_G,        KC_H,   KC_J,    KC_K,    KC_L,   KC_QUOT, XXXXXXX, 
-     XXXXXXX, KC_Z, KC_X, KC_C, KC_V, KC_B,        KC_N,   KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_ASOFF,
-                    THMBLL, XXXXXXX, THMBLR,       THMBRL, THMBRR                                     
+     XXXXXXX, KC_Z, KC_X, KC_C, KC_V, KC_B,        KC_N,   KC_M,    KC_COMM, KC_DOT, KC_SLSH, XXXXXXX,
+                    THGRL, XXXXXXX, THGRR,       THGLL, THGLR                                     
   ),
 
 // NUMNAV
@@ -95,6 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 // clang-format on
+
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {

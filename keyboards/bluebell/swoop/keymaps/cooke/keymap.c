@@ -13,36 +13,35 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include QMK_KEYBOARD_H
 
+#include "keymap_introspection.h"
 #include QMK_KEYBOARD_H
 #include "keydefs.c"
-#include "handlers.c"   
+#include "handlers.c" 
+#include "tap_dance.h" 
 
-#define PROFS       LGUI(KC_0)       //PROCR8 fullscreen
-#define PROPER      LGUI(KC_SCLN)    // PROCR8 perspective guide
-
-#define LCOLEMAK        DF(COLEMAK_DH)
+#define LHDTI           DF(HD_TI)
 #define LQWERTY         DF(QWERTY)
 #define LNUMNAV         MO(NUMNAV)      // hold for num nav layer
 #define LMACRO          MO(MACRO)       // hold for macro layer
 #define LLAYER_POINTER  MO(LAYER_POINTER)
-#define LSETTINGS       TG(SETTINGS)
+#define LFUN            MO(FUNCTION)
+#define LSETTINGS       MO(SETTINGS)
 
-#define THMBLL      LT(LMACRO,KC_SPC)
-#define THMBLR      LT(LLAYER_POINTER,KC_TAB)
-#define THMBRL      LT(LSETTINGS,KC_BSPC)
-#define THMBRR      LT(LNUMNAV,KC_ENT)
+#define THMBLL      KC_BSPC
+#define THMBLR      LT(LMACRO,KC_R)
+#define THMBRL      LT(LNUMNAV,KC_SPC)
+#define THMBRR      LT(LFUN,KC_ENT)
 
 #include "combo_config.c"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-// COLEMAK
- [COLEMAK_DH] = LAYOUT_split_3x5_3(  
-     KC_Q, KC_W, KC_F, KC_P, KC_B,       KC_J,   KC_L,    KC_U,    KC_Y,   KC_QUOT,
-     KC_A, KC_R, KC_S, KC_T, KC_G,       KC_M,   KC_N,    KC_E,    KC_I,   KC_O,   
-     KC_Z, KC_X, KC_C, KC_D, KC_V,       KC_K,   KC_H,    KC_COMM, KC_DOT, KC_SLSH,
-          XXXXXXX, THMBLL,  THMBLR,       THMBRL, THMBRR, XXXXXXX                                          
+// HANDS DOWN TITANIUM
+ [HD_TI] = LAYOUT_split_3x5_3(  
+    TD(CT_JZK), TD(CT_GQK), KC_M, KC_P, KC_V,                      TD(CT_HAT),  TD(CT_DC),    TD(CT_SLP), TD(CT_DQE),  TD(CT_QQ),
+    LGUI_T(KC_C), LALT_T(KC_S), LCTL_T(KC_N), LSFT_T(KC_T), KC_K,  TD(CT_CSC),  RSFT_T(KC_A), RCTL_T(KC_E), RALT_T(KC_I), RGUI_T(KC_H),     
+    KC_X, KC_F, KC_L, KC_D, KC_W,  TD(CT_MP),                       KC_U, KC_O, KC_Y, KC_B,     
+                     KC_ESC, THMBLL, THMBLR,                        THMBRL, THMBRR, XXXXXXX                                         
   ), 
 
 // QWERTY
@@ -55,26 +54,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // NUMNAV
  [NUMNAV] = LAYOUT_split_3x5_3(
-     XXXXXXX, KC_4,  KC_5, KC_6, KC_PLUS,   KC_ASTR, KC_PGDN, KC_UP,   KC_PGUP, XXXXXXX,
-     KC_0,    KC_1,  KC_2, KC_3, KC_MINS,   KC_SLSH, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, 
-     KC_DOT,  KC_7,  KC_8, KC_9, KC_EQL,    XXXXXXX, KC_HOME, XXXXXXX, KC_END,  XXXXXXX,
-              _______, _______, _______,    _______, _______, _______  
+     XXXXXXX, KC_4,  KC_5, KC_6, KC_LCBR,                              KC_RCBR, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+     LGUI_T(KC_0), LALT_T(KC_1), LCTL_T(KC_2), LSFT_T(KC_3), KC_LPRN,  KC_RPRN, LSFT_T(KC_LEFT), LCTL_T(KC_UP), LALT_T(KC_DOWN), LGUI_T(KC_RGHT),
+     KC_DOT, KC_7, KC_8, KC_9, KC_LBRC,                                KC_RBRC, KC_HOME, KC_PGUP, KC_PGDN, KC_END,
+              _______, _______, KC_EQL,                                _______, _______, _______  
   ),
 
 // MACRO
  [MACRO] = LAYOUT_split_3x5_3(
-     PROFS,  CLS_WIN, Z_IN,  REFRESH, NEWTAB,     EMOJI,   XXXXXXX, XXXXXXX, SWIN_OS, KC_ASON,   
-     SELECT, SAVE,    Z_OUT, SEARCH,  RPLC,       SCRSHT1, BRACES,  XXXXXXX, XXXXXXX, SWAP_OS,     
-     UNDO,   CUT,     COPY,  PASTE,   PST_CLN,    SCRSHT2, XXXXXXX, XXXXXXX, SMAC_OS, KC_ASOFF,    
-                    _______, _______, _______,    _______, _______, _______                                                  
+     XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, EMOJI,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   
+     REDO,     SAVE,    XXXXXXX, SEARCH,  SCRSHT1,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   
+     UNDO,     CUT,     COPY,    PASTE,   PST_CLN,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    
+                        _______, _______, _______,   _______, _______, _______                                                  
+  ),
+
+// FUNCTION
+ [FUNCTION] = LAYOUT_split_3x5_3(
+     KC_F11, KC_F4, KC_F5, KC_6, _______,       _______, _______, _______, _______, _______,   
+     KC_F10, KC_F1, KC_F2, KC_3, _______,       _______, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,    
+     KC_F12, KC_F7, KC_F8, KC_9, _______,       _______, _______, _______, _______, _______, 
+               _______, _______, _______,       _______, _______, _______                                                
   ),
 
 // SETTINGS
  [SETTINGS] = LAYOUT_split_3x5_3(
-     KC_SLEP, _______, _______, KC_VOLD, KC_VOLU,    _______, KC_F4, KC_F5, KC_6, KC_F10,  
-     QMKCOM,  RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI,    _______, KC_F1, KC_F2, KC_3, KC_F11,    
-     _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,    _______, KC_F7, KC_F8, KC_9, KC_F12, 
-                      _______, _______, _______,    _______, _______, _______                                                
+     KC_SLEP, _______, _______, _______, _______,    _______, _______, _______, _______, _______,  
+     QMKCOM,  _______, _______, _______, SWIN_OS,    SMAC_OS, _______, _______, _______, _______,    
+     _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______, 
+                       _______, _______, _______,    _______, _______, _______                                                
   ),
 };
 // clang-format on

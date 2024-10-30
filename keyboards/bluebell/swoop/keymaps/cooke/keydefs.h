@@ -5,10 +5,11 @@
 
 enum charybdis_keymap_layers {
     QWERTY = 0,
-	COLEMAK_DH,
+	HD_TI,
     NUMNAV,
 	MACRO,
 	LAYER_POINTER,
+	FUNCTION,
 	SETTINGS,
  };
 
